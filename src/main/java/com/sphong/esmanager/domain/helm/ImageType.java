@@ -1,4 +1,4 @@
-package com.sphong.esmanager.domain;
+package com.sphong.esmanager.domain.helm;
 
 import java.util.function.Function;
 

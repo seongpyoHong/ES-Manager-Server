@@ -1,4 +1,4 @@
-package com.sphong.esmanager.domain;
+package com.sphong.esmanager.domain.helm;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -6,31 +6,35 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class DeploymentConfig {
+public class StatefulSetConfig {
     private Integer replicaCount;
     private String heapSize;
     private String additionalJavaOpts;
+    private String storage;
 
     @Builder
-    public DeploymentConfig(Integer replicaCount, String heapSize, String additionalJavaOpts) {
+    public StatefulSetConfig(Integer replicaCount, String heapSize, String additionalJavaOpts, String storage) {
         this.replicaCount = replicaCount;
         this.heapSize = heapSize;
         this.additionalJavaOpts = additionalJavaOpts;
+        this.storage = storage;
     }
 
-    public static DeploymentConfig getMasterConfig(String additionalJavaOpts, String heapSize, Integer replicaCount) {
-        return DeploymentConfig.builder()
+    public static StatefulSetConfig getHotNodeConfig(Integer replicaCount, String heapSize, String additionalJavaOpts, String storage) {
+        return StatefulSetConfig.builder()
                                 .additionalJavaOpts(additionalJavaOpts)
                                 .heapSize(heapSize)
                                 .replicaCount(replicaCount)
+                                .storage(storage)
                                 .build();
     }
 
-    public static DeploymentConfig getClientConfig(String additionalJavaOpts, String heapSize, Integer replicaCount) {
-        return DeploymentConfig.builder()
+    public static StatefulSetConfig getWarmNodeConfig(Integer replicaCount, String heapSize, String additionalJavaOpts, String storage) {
+        return StatefulSetConfig.builder()
                 .additionalJavaOpts(additionalJavaOpts)
                 .heapSize(heapSize)
                 .replicaCount(replicaCount)
+                .storage(storage)
                 .build();
     }
 }

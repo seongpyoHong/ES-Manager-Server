@@ -1,10 +1,10 @@
-package com.sphong.esmanager.domain;
+package com.sphong.esmanager.domain.helm;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import static com.sphong.esmanager.domain.ImageType.*;
+import static com.sphong.esmanager.domain.helm.ImageType.*;
 
 @Getter
 @NoArgsConstructor
