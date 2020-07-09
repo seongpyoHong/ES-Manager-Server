@@ -6,6 +6,7 @@ import com.sphong.esmanager.domain.users.CredentialRepository;
 import com.sphong.esmanager.domain.users.Credentials;
 import com.sphong.esmanager.domain.users.UserRepository;
 import com.sphong.esmanager.domain.users.Users;
+import com.sphong.esmanager.dto.LoginRequestDto;
 import com.sphong.esmanager.dto.UserRequestDto;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -51,5 +52,10 @@ public class UserService {
     private Credentials getCredential(String projectId) throws IOException, ParseException {
         JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("credential/"+projectId+".json"));
         return jsonMapper.readValue(jsonObject.toJSONString(),Credentials.class);
+    }
+
+    public Users login(LoginRequestDto loginRequestDto) {
+        return userRepository.findByEmail(loginRequestDto.getEmail())
+                                                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 사용자입니다."));
     }
 }
