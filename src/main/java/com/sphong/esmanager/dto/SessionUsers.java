@@ -1,9 +1,6 @@
 package com.sphong.esmanager.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -22,6 +19,12 @@ public class SessionUsers implements Serializable {
     private String email;
     private String projectName;
     private String dockerRegistry;
+
+    public SessionUsers() {
+        this.email = "";
+        this.projectName = "";
+        this.dockerRegistry = "";
+    }
 
     @Builder
     public SessionUsers(String email, String password, String projectName, String dockerRegistry) {

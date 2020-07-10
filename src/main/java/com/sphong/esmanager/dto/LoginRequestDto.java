@@ -1,9 +1,8 @@
 package com.sphong.esmanager.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 public class LoginRequestDto {
