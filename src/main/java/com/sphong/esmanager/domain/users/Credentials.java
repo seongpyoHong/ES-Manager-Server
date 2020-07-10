@@ -2,6 +2,7 @@ package com.sphong.esmanager.domain.users;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Getter;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -58,5 +59,19 @@ public class Credentials {
 
     public void setId() {
         this.id = new ObjectId();
+    }
+
+    @Builder
+    public Credentials(String type, String projectId, String privateKeyId, String privateKey, String clientEmail, String clientId, String authUri, String tokenUri, String authProviderCertUrl, String clientCertUrl) {
+        this.type = type;
+        this.projectId = projectId;
+        this.privateKeyId = privateKeyId;
+        this.privateKey = privateKey;
+        this.clientEmail = clientEmail;
+        this.clientId = clientId;
+        this.authUri = authUri;
+        this.tokenUri = tokenUri;
+        this.authProviderCertUrl = authProviderCertUrl;
+        this.clientCertUrl = clientCertUrl;
     }
 }

@@ -25,6 +25,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:1.50.2'
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'org.springframework.session:spring-session-core'
+
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.projectlombok:lombok'

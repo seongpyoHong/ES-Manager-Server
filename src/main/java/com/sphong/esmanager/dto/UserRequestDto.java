@@ -1,8 +1,6 @@
 package com.sphong.esmanager.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @Getter
@@ -12,4 +10,12 @@ public class UserRequestDto {
     private String password;
     private String projectId;
     private String dockerRegistry;
+
+    @Builder
+    public UserRequestDto(String email, String password, String projectId, String dockerRegistry) {
+        this.email = email;
+        this.password = password;
+        this.projectId = projectId;
+        this.dockerRegistry = dockerRegistry;
+    }
 }
