@@ -1,12 +1,12 @@
 resource "google_container_node_pool" "primary_preemptible_nodes" {
   name       = "my-node-pool"
-  location   = "asia-northeast3"
+  location   = var.node_region
   cluster    = google_container_cluster.primary.name
   node_count = 3
 
   node_config {
     preemptible  = true
-    machine_type = "n1-standard-1"
+    machine_type = var.node_spec
 
     metadata = {
       disable-legacy-endpoints = "true"
