@@ -18,6 +18,8 @@ spec:
         component: elasticsearch
         role: data
     spec:
+      nodeSelector:
+       cloud.google.com/gke-nodepool: hdd-node-pool
       containers:
       - name: {{ include "elasticsearch.name" . }}-data-warm
         securityContext:

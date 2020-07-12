@@ -34,6 +34,8 @@ spec:
       labels:
         k8s-app: kibana
     spec:
+      nodeSelector:
+        cloud.google.com/gke-nodepool: default-node-pool
       containers:
       - name: kibana
         image: "{{ .Values.kibana.image.repository}}:{{ .Values.kibana.image.tag}}"

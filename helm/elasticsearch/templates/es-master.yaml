@@ -22,6 +22,8 @@ spec:
         role: master
 
     spec:
+      nodeSelector:
+        cloud.google.com/gke-nodepool: default-node-pool
       containers:
       - name: {{ include "elasticsearch.name" . }}-master
         securityContext:
