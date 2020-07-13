@@ -1,10 +1,8 @@
 package com.sphong.esmanager.controller;
 
 import com.sphong.esmanager.domain.users.Users;
-import com.sphong.esmanager.dto.LoginRequestDto;
-import com.sphong.esmanager.dto.SessionUsers;
-import com.sphong.esmanager.dto.UserRequestDto;
-import com.sphong.esmanager.dto.UserResponseDto;
+import com.sphong.esmanager.dto.*;
+import com.sphong.esmanager.service.ClusterService;
 import com.sphong.esmanager.service.UserService;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
-public class UserController {
+public class HomeController {
     @Resource
     private SessionUsers sessionUsers;
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ClusterService clusterService;
 
     @PostMapping("/signup")
     public UserResponseDto signUp(@RequestBody UserRequestDto requestDto) throws IOException, ParseException {
@@ -39,5 +41,11 @@ public class UserController {
                                         .build();
         }
         return sessionUsers.getEmail();
+    }
+
+    @PostMapping("/create-cluster")
+    public void createCluster(@RequestBody ClusterRequestDto requestDto) {
+        requestDto.setProjectId(sessionUsers.getProjectName());
+        clusterService.createCluster(requestDto);
     }
 }
