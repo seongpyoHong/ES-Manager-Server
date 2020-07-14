@@ -19,14 +19,19 @@ public class HelmController {
     @Autowired
     private HelmService helmService;
 
-    @GetMapping("/install")
-    public String installHelm() throws IOException, InterruptedException {
-        String cmd = "helm install elasticsearch helm/elasticsearch/";
-        return commandExecutor.run(cmd);
+
+    @PostMapping("/set-elasticsearch-config")
+    public void writeESConfig(@RequestBody HelmValues helmValues) throws IOException {
+        helmService.writeESConfig(helmValues);
     }
 
-    @PostMapping("/helm-settings")
-    public void writeYaml(@RequestBody HelmValues helmValues) throws IOException {
-        helmService.writeYaml(helmValues);
+    @PostMapping("/install-elasticsearch")
+    public String createES() throws IOException, InterruptedException {
+        return helmService.createES();
+    }
+
+    @PostMapping("delete-elasticsearch")
+    public String deleteES() throws IOException, InterruptedException {
+        return helmService.deleteES();
     }
 }

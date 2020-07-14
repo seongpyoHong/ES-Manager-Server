@@ -36,6 +36,8 @@ spec:
       labels:
         k8s-app: cerebro
     spec:
+      nodeSelector:
+        cloud.google.com/gke-nodepool: default-node-pool
       containers:
       - name: cerebro
         image:  "{{ .Values.cerebro.image.repository }}:{{ .Values.cerebro.image.tag }}"

@@ -19,6 +19,8 @@ spec:
         component: elasticsearch
         role: client
     spec:
+      nodeSelector:
+        cloud.google.com/gke-nodepool: default-node-pool
       containers:
       - name: {{ include "elasticsearch.name" . }}-client
         securityContext:
