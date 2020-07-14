@@ -19,11 +19,15 @@ public class SessionUsers implements Serializable {
     private String email;
     private String projectName;
     private String dockerRegistry;
+    private String clusterName;
+    private String nodeRegion;
 
     public SessionUsers() {
         this.email = "";
         this.projectName = "";
         this.dockerRegistry = "";
+        this.clusterName = "";
+        this.nodeRegion = "";
     }
 
     @Builder

@@ -3,6 +3,7 @@ package com.sphong.esmanager.controller;
 import com.sphong.esmanager.domain.users.Users;
 import com.sphong.esmanager.dto.*;
 import com.sphong.esmanager.service.ClusterService;
+import com.sphong.esmanager.service.GoogleAuthService;
 import com.sphong.esmanager.service.UserService;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class HomeController {
     @Autowired
     private ClusterService clusterService;
 
+    @Autowired
+    private GoogleAuthService googleAuthService;
+
     @PostMapping("/signup")
     public UserResponseDto signUp(@RequestBody UserRequestDto requestDto) throws IOException, ParseException {
         return userService.saveUserInfos(requestDto);
@@ -45,6 +49,8 @@ public class HomeController {
 
     @PostMapping("/set-cluster")
     public String setClusterConfig(@RequestBody ClusterRequestDto requestDto) throws IOException, InterruptedException {
+        sessionUsers.setClusterName(requestDto.getClusterName());
+        sessionUsers.setNodeRegion(requestDto.getNodeRegion());
         requestDto.setProjectId(sessionUsers.getProjectName());
         return clusterService.setClusterConfig(requestDto);
     }
@@ -54,8 +60,15 @@ public class HomeController {
         return clusterService.createCluster();
     }
 
-    @PostMapping("delete-cluster")
+    @PostMapping("/delete-cluster")
     public String deleteCluster() throws IOException, InterruptedException {
         return clusterService.deleteCluster();
+    }
+
+    @PostMapping("/get-auth")
+    public String getAuth() throws IOException, InterruptedException {
+        return googleAuthService.getGcloudAuth(sessionUsers.getProjectName(),
+                                               sessionUsers.getClusterName(),
+                                               sessionUsers.getNodeRegion());
     }
 }
