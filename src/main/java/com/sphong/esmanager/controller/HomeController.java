@@ -43,9 +43,19 @@ public class HomeController {
         return sessionUsers.getEmail();
     }
 
-    @PostMapping("/create-cluster")
-    public void createCluster(@RequestBody ClusterRequestDto requestDto) {
+    @PostMapping("/set-cluster")
+    public String setClusterConfig(@RequestBody ClusterRequestDto requestDto) throws IOException, InterruptedException {
         requestDto.setProjectId(sessionUsers.getProjectName());
-        clusterService.createCluster(requestDto);
+        return clusterService.setClusterConfig(requestDto);
+    }
+
+    @PostMapping("/create-cluster")
+    public String createCluster() throws IOException, InterruptedException {
+        return clusterService.createCluster();
+    }
+
+    @PostMapping("delete-cluster")
+    public String deleteCluster() throws IOException, InterruptedException {
+        return clusterService.deleteCluster();
     }
 }

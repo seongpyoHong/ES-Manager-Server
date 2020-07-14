@@ -16,7 +16,7 @@ public class TerraformGenerator {
     private FileWriter fileWriter;
 
     public TerraformGenerator() throws IOException {
-        String filename = "terraform/test-variable.tf";
+        String filename = "terraform/variable.tf";
         File file = new File(filename);
         fileWriter = new FileWriter(file, false);
     }
