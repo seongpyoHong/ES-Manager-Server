@@ -10,7 +10,7 @@ public class ElasticsearchConfig {
     private String strategy;
     private ImageConfig image;
     private String clusterName;
-    private Boolean persistenceEnable;
+    private Boolean persistentEnable;
     private DeploymentConfig client;
     private DeploymentConfig master;
     private StatefulSetConfig hot;
@@ -21,7 +21,7 @@ public class ElasticsearchConfig {
         this.strategy = strategy;
         this.image = image;
         this.clusterName = clusterName;
-        this.persistenceEnable = persistenceEnable;
+        this.persistentEnable = persistenceEnable;
         this.client = client;
         this.master = master;
         this.hot = hot;
