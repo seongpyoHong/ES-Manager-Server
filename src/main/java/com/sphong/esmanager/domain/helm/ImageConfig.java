@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Objects;
+
 import static com.sphong.esmanager.domain.helm.ImageType.*;
 
 @Getter
@@ -42,5 +44,20 @@ public class ImageConfig {
                 .repository(KIBANA.getName())
                 .tag(KIBANA.getTag())
                 .build();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ImageConfig that = (ImageConfig) o;
+        return Objects.equals(repository, that.repository) &&
+                Objects.equals(tag, that.tag) &&
+                Objects.equals(pullPolicy, that.pullPolicy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(repository, tag, pullPolicy);
     }
 }
