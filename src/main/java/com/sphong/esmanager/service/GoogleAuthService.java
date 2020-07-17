@@ -12,11 +12,6 @@ public class GoogleAuthService {
     @Autowired
     private CommandExecutor commandExecutor;
 
-    //gcloud auth activate-service-account --key-file=()
-    //gcloud config set project projectname
-    //gcloud config set compute/zone region
-    //gcloud container clusters get-credential cluster-name
-
     public String getGcloudAuth(String projectName, String clusterName, String nodeRegion) throws IOException, InterruptedException {
         activateServiceAccount(projectName);
         setPorject(projectName);

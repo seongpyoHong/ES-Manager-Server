@@ -16,7 +16,7 @@ public class YamlWriter {
     @Autowired
     private ObjectMapper mapper;
 
-    public void writeYaml(HelmValues helmValues) throws IOException {
+    public void writeToYaml(HelmValues helmValues) throws IOException {
          mapper.writeValue(new File("helm/elasticsearch/values.yaml"),helmValues);
     }
 }
