@@ -1,6 +1,5 @@
 package com.sphong.esmanager.domain.helm;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,16 +14,4 @@ public class ElasticsearchConfig {
     private DeploymentConfig master;
     private StatefulSetConfig hot;
     private StatefulSetConfig warm;
-
-    @Builder
-    public ElasticsearchConfig(String strategy, ImageConfig image, String clusterName, Boolean persistenceEnable, DeploymentConfig client, DeploymentConfig master, StatefulSetConfig hot, StatefulSetConfig warm) {
-        this.strategy = strategy;
-        this.image = image;
-        this.clusterName = clusterName;
-        this.persistentEnable = persistenceEnable;
-        this.client = client;
-        this.master = master;
-        this.hot = hot;
-        this.warm = warm;
-    }
 }

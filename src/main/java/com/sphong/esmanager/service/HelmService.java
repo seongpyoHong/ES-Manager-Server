@@ -17,7 +17,7 @@ public class HelmService {
     private CommandExecutor commandExecutor;
 
     public void writeESConfig(HelmValues helmValues) throws IOException {
-        yamlWriter.writeYaml(helmValues);
+        yamlWriter.writeToYaml(helmValues);
     }
 
     public String createES() throws IOException, InterruptedException {
