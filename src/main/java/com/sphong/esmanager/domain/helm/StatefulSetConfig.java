@@ -10,4 +10,5 @@ public class StatefulSetConfig {
     private String heapSize;
     private String additionalJavaOpts;
     private String storage;
+    private ResourceConfig resources;
 }

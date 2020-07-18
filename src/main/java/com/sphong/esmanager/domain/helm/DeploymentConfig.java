@@ -9,4 +9,5 @@ public class DeploymentConfig {
     private Integer replicaCount;
     private String heapSize;
     private String additionalJavaOpts;
+    private ResourceConfig resources;
 }
