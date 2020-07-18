@@ -1,66 +1,43 @@
-# Default values for elasticsearch.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
 cerebro:
   image:
-    repository: asia.gcr.io/sphong-kuber/cerebro
-    tag: 0.9.0
-    pullPolicy: IfNotPresent
-  username: admin
-  password: 1234
+    repository: "asia.gcr.io/sphong-kuber/cerebro"
+    tag: "0.9.0"
+    pullPolicy: "IfNotPresent"
+  username: "admin"
+  password: "1234"
   port: 9000
   replicaCount: 1
-
-
 elasticsearch:
-  strategy: RollingUpdate
+  strategy: "RollingUpdate"
   image:
-    repository: asia.gcr.io/sphong-kuber/elasticsearch-base
-    tag: 6.8.2
-    pullPolicy: IfNotPresent
-
+    repository: "asia.gcr.io/sphong-kuber/elasticsearch-base"
+    tag: "6.8.2"
+    pullPolicy: "IfNotPresent"
+  clusterName: "es-cluster"
+  persistentEnable: true
   client:
     replicaCount: 1
     heapSize: "512m"
-    addtionalJavaOpts: ""
+    additionalJavaOpts: ""
   master:
     replicaCount: 3
     heapSize: "512m"
-    addtionalJavaOpts: ""
+    additionalJavaOpts: ""
   hot:
     replicaCount: 1
-    storage: 1Gi
     heapSize: "512m"
-    addtionalJavaOpts: ""
+    additionalJavaOpts: ""
+    storage: "1Gi"
   warm:
     replicaCount: 1
-    storage: 1Gi
     heapSize: "512m"
-    addtionalJavaOpts: ""
-
-  clusterName: es-cluster
-  persistentEnable: "true"
-
+    additionalJavaOpts: ""
+    storage: "1Gi"
 kibana:
   image:
-    repository: asia.gcr.io/sphong-kuber/kibana
-    tag: 6.8.2
-    pullPolicy: IfNotPresent
-
+    repository: "asia.gcr.io/sphong-kuber/kibana"
+    tag: "6.8.2"
+    pullPolicy: "IfNotPresent"
 cluster:
-  userEmail: "sphong0417@gmail.com"
-  managerEmail: "sphong0417@gmail.com"
-
-# autoscaling:
-#   enabled: false
-#   minReplicas: 1
-#   maxReplicas: 100
-#   targetCPUUtilizationPercentage: 80
-#   # targetMemoryUtilizationPercentage: 80
-
-# nodeSelector: {}
-
-# tolerations: []
-
-# affinity: {}
+  userEmail: "user@email.com"
+  managerEmail: "manager@email.com"
