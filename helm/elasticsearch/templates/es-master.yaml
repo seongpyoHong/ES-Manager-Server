@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "elasticsearch.name" . }}-master
   labels:
+    instance: "elasticsearch-manager"
     component: elasticsearch
     role: master
 
@@ -10,6 +11,7 @@ spec:
   replicas: {{ .Values.elasticsearch.master.replicaCount }}
   selector:
     matchLabels:
+      instance: "elasticsearch-manager"
       component: elasticsearch
       role: master
 
@@ -18,6 +20,7 @@ spec:
   template:
     metadata:
       labels:
+        instance: "elasticsearch-manager"
         component: elasticsearch
         role: master
 

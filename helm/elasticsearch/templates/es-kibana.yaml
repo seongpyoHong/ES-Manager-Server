@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: kibana
   labels:
-    k8s-app: kibana
-    kubernetes.io/name: "Kibana"
+    instance: "elasticsearch-manager"
+    component: kibana
 spec:
   type: LoadBalancer
   ports:
@@ -19,11 +19,13 @@ kind: Deployment
 metadata:
   name: kibana
   labels:
-    k8s-app: kibana
+    instance: "elasticsearch-manager"
+    component: kibana
 spec:
   selector:
     matchLabels:
-      k8s-app: kibana
+      instance: "elasticsearch-manager"
+      component: kibana
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -32,7 +34,8 @@ spec:
   template:
     metadata:
       labels:
-        k8s-app: kibana
+        instance: "elasticsearch-manager"
+        component: kibana
     spec:
       nodeSelector:
         cloud.google.com/gke-nodepool: default-node-pool

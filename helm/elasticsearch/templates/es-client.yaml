@@ -3,12 +3,14 @@ kind: Deployment
 metadata:
   name: {{ include "elasticsearch.name" . }}-client
   labels:
+    instance: "elasticsearch-manager"
     component: elasticsearch
     role: client
 spec:
   replicas: {{ .Values.elasticsearch.client.replicaCount }}
   selector:
     matchLabels:
+      instance: "elasticsearch-manager"
       component: elasticsearch
       role: client
   strategy:
@@ -16,6 +18,7 @@ spec:
   template:
     metadata:
       labels:
+        instance: "elasticsearch-manager"
         component: elasticsearch
         role: client
     spec:

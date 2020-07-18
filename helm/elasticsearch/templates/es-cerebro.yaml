@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: cerebro
   labels:
-    k8s-app: cerebro
-    kubernetes.io/name: "Cerebro"
+    instance: "elasticsearch-manager"
+    component: cerebro
 spec:
   type: LoadBalancer
   ports:
@@ -19,13 +19,15 @@ kind: Deployment
 metadata:
   name: cerebro
   labels:
-    k8s-app: cerebro
+    instance: "elasticsearch-manager"
+    component: cerebro
 spec:
   replicas: {{ .Values.cerebro.replicaCount }}
   selector:
     matchLabels:
-      k8s-app: cerebro
-        
+      instance: "elasticsearch-manager"
+      component: cerebro
+
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -34,7 +36,8 @@ spec:
   template:
     metadata:
       labels:
-        k8s-app: cerebro
+        instance: "elasticsearch-manager"
+        component: "cerebro"
     spec:
       nodeSelector:
         cloud.google.com/gke-nodepool: default-node-pool

@@ -3,6 +3,7 @@ kind: StatefulSet
 metadata:
   name: {{ include "elasticsearch.name" . }}-data-hot
   labels:
+    instance: "elasticsearch-manager"
     component: elasticsearch
     role: data
 spec:
@@ -10,11 +11,13 @@ spec:
   serviceName: {{ include "elasticsearch.name" . }}-data
   selector:
     matchLabels:
+      instance: "elasticsearch-manager"
       component: elasticsearch
       role: data 
   template:
     metadata:
       labels:
+        instance: "elasticsearch-manager"
         component: elasticsearch
         role: data
     spec:
