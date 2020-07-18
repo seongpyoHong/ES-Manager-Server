@@ -26,6 +26,7 @@ dependencies {
     implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:1.50.2'
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
     implementation 'org.springframework.session:spring-session-core'
+    implementation 'io.kubernetes:client-java:8.0.2'
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
