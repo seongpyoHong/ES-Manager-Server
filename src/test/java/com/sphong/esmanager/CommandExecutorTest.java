@@ -1,6 +1,6 @@
 package com.sphong.esmanager;
 
-import com.sphong.esmanager.config.CommandExecutor;
+import com.sphong.esmanager.utils.CommandExecutor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

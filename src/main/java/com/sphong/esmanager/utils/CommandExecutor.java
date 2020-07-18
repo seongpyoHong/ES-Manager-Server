@@ -1,4 +1,4 @@
-package com.sphong.esmanager.config;
+package com.sphong.esmanager.utils;
 
 import org.springframework.stereotype.Component;
 
