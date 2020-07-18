@@ -30,12 +30,11 @@ spec:
               - IPC_LOCK
 
         image: "{{ .Values.elasticsearch.image.repository }}:{{ .Values.elasticsearch.image.tag}}"
-        
-        livenessProbe:
-          tcpSocket:
-            port: 9300
-          timeoutSeconds: 120
-          successThreshold: 1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+{{ toYaml .Values.elasticsearch.client.resources | indent 10 }}
 
         readinessProbe:
           tcpSocket:

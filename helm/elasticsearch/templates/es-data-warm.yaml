@@ -31,6 +31,8 @@ spec:
         args:
         - /run.sh
         - -Enode.attr.box_type=warm
+        resources:
+{{ toYaml .Values.elasticsearch.warm.resources | indent 10 }}
         readinessProbe:
           tcpSocket:
             port: 9300

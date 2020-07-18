@@ -33,6 +33,11 @@ spec:
               - IPC_LOCK
 
         image: "{{ .Values.elasticsearch.image.repository }}:{{ .Values.elasticsearch.image.tag}}"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+{{ toYaml .Values.elasticsearch.master.resources | indent 10 }}
 
         readinessProbe:
           tcpSocket:
