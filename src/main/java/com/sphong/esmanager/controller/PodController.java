@@ -1,6 +1,7 @@
 package com.sphong.esmanager.controller;
 
 import com.sphong.esmanager.dto.kubernetes.PodMetadataResponseDto;
+import com.sphong.esmanager.dto.kubernetes.PodSpecResponseDto;
 import com.sphong.esmanager.utils.KubernetesManager;
 import io.kubernetes.client.openapi.ApiException;
 import io.kubernetes.client.openapi.models.V1ObjectMeta;
@@ -19,5 +20,10 @@ public class PodController {
     @GetMapping("/get-pods-metadata")
     public List<PodMetadataResponseDto> getAllPodMetadata() throws ApiException {
         return kubernetesManager.getPodMetadataList();
+    }
+
+    @GetMapping("/get-pods-spec")
+    public List<PodSpecResponseDto> getAllPodSpec() throws ApiException {
+        return kubernetesManager.getPodSpecList();
     }
 }
