@@ -5,16 +5,14 @@ import io.kubernetes.client.util.ClientBuilder;
 import io.kubernetes.client.util.KubeConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 @Configuration
 public class KubernetesClientConfig {
-    private static final String KUBE_CONFIG_PATH = "~/.kube/config";
+    private static final String KUBE_CONFIG_PATH = "/Users/seongpyo/.kube/config";
     @Bean
-    public ApiClient kubernetesClient() throws IOException {
+    public ApiClient apiClient() throws IOException {
         return ClientBuilder.kubeconfig(KubeConfig.loadKubeConfig(new FileReader(KUBE_CONFIG_PATH))).build();
     }
 }
