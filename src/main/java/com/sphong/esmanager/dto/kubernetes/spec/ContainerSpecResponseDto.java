@@ -1,4 +1,4 @@
-package com.sphong.esmanager.dto.kubernetes;
+package com.sphong.esmanager.dto.kubernetes.spec;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,7 +1,6 @@
 package com.sphong.esmanager.config;
 
-import com.sphong.esmanager.dto.kubernetes.PodMetadataResponseDto;
-import com.sun.istack.NotNull;
+import com.sphong.esmanager.dto.kubernetes.metadata.PodMetadataResponseDto;
 import io.kubernetes.client.openapi.models.V1ObjectMeta;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

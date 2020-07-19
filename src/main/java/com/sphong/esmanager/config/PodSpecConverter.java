@@ -1,9 +1,9 @@
 package com.sphong.esmanager.config;
 
-import com.sphong.esmanager.dto.kubernetes.ContainerSpecResponseDto;
-import com.sphong.esmanager.dto.kubernetes.PodSpecResponseDto;
-import com.sphong.esmanager.dto.kubernetes.ReadinessProbeResponseDto;
-import com.sphong.esmanager.dto.kubernetes.ResourceResponseDto;
+import com.sphong.esmanager.dto.kubernetes.spec.ContainerSpecResponseDto;
+import com.sphong.esmanager.dto.kubernetes.spec.PodSpecResponseDto;
+import com.sphong.esmanager.dto.kubernetes.spec.ReadinessProbeResponseDto;
+import com.sphong.esmanager.dto.kubernetes.spec.ResourceResponseDto;
 import io.kubernetes.client.openapi.models.V1Container;
 import io.kubernetes.client.openapi.models.V1PodSpec;
 import io.kubernetes.client.openapi.models.V1Probe;
