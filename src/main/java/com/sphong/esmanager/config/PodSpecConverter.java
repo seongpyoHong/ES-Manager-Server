@@ -4,10 +4,14 @@ import com.sphong.esmanager.dto.kubernetes.spec.ContainerSpecResponseDto;
 import com.sphong.esmanager.dto.kubernetes.spec.PodSpecResponseDto;
 import com.sphong.esmanager.dto.kubernetes.spec.ReadinessProbeResponseDto;
 import com.sphong.esmanager.dto.kubernetes.spec.ResourceResponseDto;
+import com.sphong.esmanager.dto.kubernetes.spec.probe.InvalidProbeTypeException;
+import com.sphong.esmanager.dto.kubernetes.spec.probe.Probe;
+import com.sphong.esmanager.dto.kubernetes.spec.probe.ProbeFactory;
 import io.kubernetes.client.openapi.models.V1Container;
 import io.kubernetes.client.openapi.models.V1PodSpec;
 import io.kubernetes.client.openapi.models.V1Probe;
 import io.kubernetes.client.openapi.models.V1ResourceRequirements;
+import lombok.SneakyThrows;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +20,7 @@ import java.util.Objects;
 @Component
 public class PodSpecConverter implements Converter<V1PodSpec, PodSpecResponseDto> {
 
+    @SneakyThrows
     @Override
     public PodSpecResponseDto convert(V1PodSpec source) {
         return PodSpecResponseDto.builder()
@@ -25,7 +30,7 @@ public class PodSpecConverter implements Converter<V1PodSpec, PodSpecResponseDto
                 .build();
     }
 
-    private ContainerSpecResponseDto getContainerSpec(V1Container v1Container) {
+    private ContainerSpecResponseDto getContainerSpec(V1Container v1Container) throws InvalidProbeTypeException {
         return ContainerSpecResponseDto.builder()
                 .image(v1Container.getImage())
                 .imagePullPolicy(v1Container.getImagePullPolicy())
@@ -41,30 +46,17 @@ public class PodSpecConverter implements Converter<V1PodSpec, PodSpecResponseDto
                                   .build();
     }
 
-    private ReadinessProbeResponseDto getReadinessProbe(V1Probe v1Probe) {
+    private ReadinessProbeResponseDto getReadinessProbe(V1Probe v1Probe) throws InvalidProbeTypeException {
         return ReadinessProbeResponseDto.builder()
                                             .failureThreshold(v1Probe.getFailureThreshold())
                                             .periodSeconds(v1Probe.getPeriodSeconds())
                                             .successThreshold(v1Probe.getSuccessThreshold())
                                             .timeoutSeconds(v1Probe.getTimeoutSeconds())
-                                            .details(getReadinessProbeDetails(v1Probe))
+                                            .probe(getProbe(v1Probe))
                                             .build();
     }
 
-    private String getReadinessProbeDetails(V1Probe v1Probe) {
-        StringBuilder details = new StringBuilder();
-        if (v1Probe.getHttpGet() != null) {
-            details.append("httpGet | ")
-                    .append(v1Probe.getHttpGet().getPath())
-                    .append(":")
-                    .append(v1Probe.getHttpGet().getPort().toString());
-        } else if (v1Probe.getExec() != null) {
-            details.append("Exec | ")
-                    .append(v1Probe.getExec().getCommand().toString());
-        } else if (v1Probe.getTcpSocket() != null){
-            details.append("TCPSocket | port : ")
-                    .append(v1Probe.getTcpSocket().getPort().toString());
-        }
-        return details.toString();
+    private Probe getProbe(V1Probe v1Probe) throws InvalidProbeTypeException {
+        return ProbeFactory.makeReadinessProbeType(v1Probe);
     }
 }

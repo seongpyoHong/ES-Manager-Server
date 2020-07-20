@@ -1,5 +1,6 @@
 package com.sphong.esmanager.dto.kubernetes.spec;
 
+import com.sphong.esmanager.dto.kubernetes.spec.probe.Probe;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,14 +12,14 @@ public class ReadinessProbeResponseDto {
     private Integer periodSeconds;
     private Integer successThreshold;
     private Integer timeoutSeconds;
-    private String details;
+    private Probe probe;
 
     @Builder
-    public ReadinessProbeResponseDto(Integer failureThreshold, Integer periodSeconds, Integer successThreshold, Integer timeoutSeconds, String details) {
+    public ReadinessProbeResponseDto(Integer failureThreshold, Integer periodSeconds, Integer successThreshold, Integer timeoutSeconds, Probe probe) {
         this.failureThreshold = failureThreshold;
         this.periodSeconds = periodSeconds;
         this.successThreshold = successThreshold;
         this.timeoutSeconds = timeoutSeconds;
-        this.details = details;
+        this.probe = probe;
     }
 }
