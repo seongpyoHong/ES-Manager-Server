@@ -12,7 +12,8 @@ spec:
     protocol: TCP
     targetPort: {{ .Values.cerebro.port }}
   selector:
-    k8s-app: cerebro
+    instance: "elasticsearch-manager"
+    component: cerebro
 ---
 apiVersion: apps/v1
 kind: Deployment
