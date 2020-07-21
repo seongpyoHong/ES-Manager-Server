@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: {{ include "elasticsearch.name" . }}-client
   labels:
+    instance: "elasticsearch-manager"
     component: elasticsearch
 spec:
   selector:

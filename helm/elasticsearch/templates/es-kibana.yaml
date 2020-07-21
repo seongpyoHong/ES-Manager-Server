@@ -12,7 +12,8 @@ spec:
     protocol: TCP
     targetPort: 5601
   selector:
-    k8s-app: kibana
+    instance: "elasticsearch-manager"
+    component: kibana
 ---
 apiVersion: apps/v1
 kind: Deployment
