@@ -3,9 +3,6 @@ package com.sphong.esmanager.dto.kubernetes.metadata;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.joda.time.DateTime;
-
-import java.util.Date;
 
 @NoArgsConstructor
 @Getter

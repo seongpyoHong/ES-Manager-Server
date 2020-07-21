@@ -1,6 +1,5 @@
 package com.sphong.esmanager.dto.kubernetes.spec.probe;
 
-import io.kubernetes.client.custom.IntOrString;
 import io.kubernetes.client.openapi.models.V1Probe;
 import lombok.Getter;
 

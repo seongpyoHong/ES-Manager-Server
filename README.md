@@ -37,9 +37,9 @@
 
 
 #### TODO
-- [ ] Helm Chart 수정 (`" "` 처리)
 - [ ] 다중 사용자 처리 
 - [ ] Endpoint 사용자에게 제공
+- [ ] Logs 제공
 - Grafana를 통한 Metric 제공
 - Backup Storage 제공
 
