@@ -6,9 +6,6 @@ build/
 !**/src/test/**
 .idea/
 
-## Credentials
-credential/**
-
 ## Terraform
 terraform/.terraform
 terraform/*.tfstate

@@ -1,9 +1,10 @@
 package com.sphong.esmanager.service;
 
-import com.sphong.esmanager.domain.users.UserRepository;
-import com.sphong.esmanager.domain.users.Users;
-import com.sphong.esmanager.dto.LoginRequestDto;
-import com.sphong.esmanager.dto.UserRequestDto;
+import com.sphong.esmanager.users.repository.UserRepository;
+import com.sphong.esmanager.users.domain.Users;
+import com.sphong.esmanager.users.dto.LoginRequestDto;
+import com.sphong.esmanager.users.dto.UserRequestDto;
+import com.sphong.esmanager.users.service.UserService;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
