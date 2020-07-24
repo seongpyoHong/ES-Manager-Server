@@ -23,7 +23,7 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/signup")
+    @PostMapping("/user")
     public UserResponseDto signUp(@RequestBody UserRequestDto requestDto) throws IOException, ParseException {
         return userService.saveUserInfos(requestDto);
     }

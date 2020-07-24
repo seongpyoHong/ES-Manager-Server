@@ -17,22 +17,22 @@ public class KubernetesLookUpController {
     @Autowired
     private KubernetesLookUpService kubernetesLookUpService;
 
-    @GetMapping("/get-pods-metadata")
+    @GetMapping("/pods/metadata")
     public List<PodMetadataResponseDto> getAllPodMetadata() throws ApiException {
         return kubernetesLookUpService.getPodMetadataList();
     }
 
-    @GetMapping("/get-pods-spec")
+    @GetMapping("/pods/spec")
     public List<PodSpecResponseDto> getAllPodSpec() throws ApiException {
         return kubernetesLookUpService.getPodSpecList();
     }
 
-    @GetMapping("/get-pods-status-history")
+    @GetMapping("/pods/status")
     public List<PodStatusResponseDto> getPodStatus() throws ApiException {
         return kubernetesLookUpService.getPodStatusHistoryList();
     }
 
-    @GetMapping("get-endpoints")
+    @GetMapping("/endpoints")
     public List<EndpointResponseDto> getEndpoints() throws ApiException {
         return kubernetesLookUpService.getEndpoints();
     }
